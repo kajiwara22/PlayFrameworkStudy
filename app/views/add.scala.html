@@ -1,0 +1,16 @@
+@(msg:String,form1:Form[models.AwsS3])
+
+@main("sample Page"){
+	<h1>Hello</h1>
+	<p>@msg</p>
+	@helper.form(action = routes.Application.create){
+		
+		@(helper.inputText(
+			field = form1("accessKey")
+		))
+		@(helper.inputText(
+			field = form1("seacretKey")
+		))
+		<input type="submit">	
+	}
+}
