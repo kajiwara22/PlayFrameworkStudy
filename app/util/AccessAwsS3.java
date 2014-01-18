@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
@@ -80,8 +82,11 @@ public class AccessAwsS3 {
 	     // AmazonS3Clientインスタンスを作成
 	    AmazonS3Client cli = makeS3Client();
 
+	    Region asiaRegion = Region.getRegion(Regions.AP_NORTHEAST_1);
+	    cli.setRegion(asiaRegion);
+
 	     // エンドポイントを設定
-	    cli.setEndpoint(this.endPoint);
+	    //cli.setEndpoint(this.endPoint);
 
 	     // rootDirectory(Bucket名), objectKey(オブジェクトまでの相対パス)からリクエストを作成
 	    GetObjectRequest request = new GetObjectRequest(bucketName, objectKey);

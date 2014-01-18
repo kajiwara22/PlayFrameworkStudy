@@ -57,8 +57,10 @@ public class AwsS3 extends Model{
 				File dir = new File(getFile.getParent());
 				for (File file : dir.listFiles()) {
 					Path path = file.toPath();
-					for (String readLine : Files.readAllLines(path, Charset.defaultCharset())) {
-						retText.append(readLine);
+					if(path.toString().endsWith(".json")||path.toString().endsWith(".txt")){
+						for (String readLine : Files.readAllLines(path, Charset.defaultCharset())) {
+							retText.append(readLine);
+						}
 					}
 				}
 			}

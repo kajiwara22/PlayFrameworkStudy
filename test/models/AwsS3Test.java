@@ -14,11 +14,11 @@ public class AwsS3Test {
 	@Test
 	public void getJsonTest() throws Exception{
 		AwsS3 awsS3 = new AwsS3();
-		awsS3.accessKey="AKIAJ2EHVUX57DUOYKPQ";
-		awsS3.secretKey="iRVoFE/iiarXqodLWFt5nEYClb0KDF+nnasNUGDh";
+		awsS3.accessKey="(please input your accesskey)";
+		awsS3.secretKey="(please input your secretkey)";
 		awsS3.endPoint="https://s3-ap-northeast-1.amazonaws.com";
-		awsS3.bucketName="gitandvpnserver";
-		awsS3.objectKey="20140120/20140120.zip";
+		awsS3.bucketName="(please input your bucke name)";
+		awsS3.objectKey="(please input your object key)";
 		String result = awsS3.getJson();
 		StringBuilder retText = new StringBuilder();
 		File file = new File("/Users/KAJIWARAYutaka/Documents/20140118Json.txt");
