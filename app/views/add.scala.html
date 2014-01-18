@@ -4,13 +4,25 @@
 	<h1>Hello</h1>
 	<p>@msg</p>
 	@helper.form(action = routes.Application.create){
-		
+
+		@(helper.inputText(
+			field = form1("subject")
+		))
 		@(helper.inputText(
 			field = form1("accessKey")
 		))
 		@(helper.inputText(
-			field = form1("seacretKey")
+			field = form1("secretKey")
 		))
-		<input type="submit">	
+		@(helper.inputText(
+			field = form1("endPoint")
+		))
+		@(helper.inputText(
+			field = form1("bucketName")
+		))
+		@(helper.inputText(
+			field = form1("objectKey")
+		))
+		<input type="submit">
 	}
 }

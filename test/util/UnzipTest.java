@@ -2,8 +2,6 @@ package util;
 
 import static org.fest.assertions.Assertions.*;
 
-import  org.junit.*;
-
 import java.io.File;
 
 import org.junit.Test;
@@ -19,6 +17,7 @@ public class UnzipTest {
 		unzip.decode(file,outputPath);
 		File outputCheck = new File(outputPath+"/test.json");
 		assertThat(outputCheck.exists()).isEqualTo(true);
+
 	}
 
 }

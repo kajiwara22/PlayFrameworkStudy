@@ -5,8 +5,12 @@
 
 create table aws_s3 (
   id                        bigint not null,
+  subject                   varchar(255),
   access_key                varchar(255),
-  seacret_key               varchar(255),
+  secret_key                varchar(255),
+  end_point                 varchar(255),
+  bucket_name               varchar(255),
+  object_key                varchar(255),
   constraint pk_aws_s3 primary key (id))
 ;
 

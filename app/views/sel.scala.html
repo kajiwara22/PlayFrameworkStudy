@@ -1,0 +1,10 @@
+@(msg: String, form1:Form[models.AwsS3],opts:List[Tuple2[String,String]])
+
+
+@main("Sample page"){
+
+	@helper.form(action = routes.Application.showJson){
+		@(helper.select(field = form1("id"),options = opts))
+		<input type="submit">
+	}
+}

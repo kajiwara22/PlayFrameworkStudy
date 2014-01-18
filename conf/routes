@@ -5,7 +5,9 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET		/add						controllers.Application.add()
+GET		/select						controllers.Application.select()
 POST	/create						controllers.Application.create()
+POST	/showJson					controllers.Application.showJson()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
