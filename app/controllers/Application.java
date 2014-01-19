@@ -3,7 +3,7 @@ package controllers;
 import models.AwsS3;
 
 import java.util.*;
-
+import com.amazonaws.regions.Regions;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -16,7 +16,11 @@ public class Application extends Controller {
 
 	public static Result add() {
 		Form<AwsS3> f = new Form<AwsS3>(AwsS3.class);
-		return ok(add.render("投稿フォーム",f));
+		List<Tuple2<String,String>>  opts = new ArrayList<Tuple2<String,String>>();
+    	for (Regions regions : Regions.values()) {
+    		opts.add(new Tuple2<String,String>(regions.getName(),regions.getName()));
+		}
+		return ok(add.render("投稿フォーム",f,opts));
 		//return null;
 	}
 
@@ -27,7 +31,11 @@ public class Application extends Controller {
 			data.save();
 			return redirect("/");
 		}else{
-			return badRequest(add.render("ERROR",f));
+			List<Tuple2<String,String>>  opts = new ArrayList<Tuple2<String,String>>();
+	    	for (Regions regions : Regions.values()) {
+	    		opts.add(new Tuple2<String,String>(regions.getName(),regions.getName()));
+			}
+			return badRequest(add.render("ERROR",f,opts));
 			//return null;
 		}
 	}

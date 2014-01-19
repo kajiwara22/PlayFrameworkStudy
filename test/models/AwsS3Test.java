@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.junit.Test;
+
+
 import static org.fest.assertions.Assertions.*;
 
 public class AwsS3Test {
@@ -16,7 +18,7 @@ public class AwsS3Test {
 		AwsS3 awsS3 = new AwsS3();
 		awsS3.accessKey="(please input your accesskey)";
 		awsS3.secretKey="(please input your secretkey)";
-		awsS3.endPoint="https://s3-ap-northeast-1.amazonaws.com";
+		awsS3.region="(please input your region)";
 		awsS3.bucketName="(please input your bucke name)";
 		awsS3.objectKey="(please input your object key)";
 		String result = awsS3.getJson();

@@ -25,11 +25,15 @@ public class AccessAwsS3 {
 
 	private String accessSecretKey;
 
-	private String endPoint;
+	private Regions region;
 
 	private String bucketName;
 
 	private String objectKey;
+
+	public void setRegion(Regions region) {
+		this.region = region;
+	}
 
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
@@ -39,9 +43,6 @@ public class AccessAwsS3 {
 		this.accessSecretKey = accessSecretKey;
 	}
 
-	public void setEndPoint(String endPoint) {
-		this.endPoint = endPoint;
-	}
 
 	public void setBucketName(String bucketName) {
 		this.bucketName = bucketName;
@@ -49,6 +50,15 @@ public class AccessAwsS3 {
 
 	public void setObjectKey(String objectKey) {
 		this.objectKey = objectKey;
+	}
+
+	public void setRegionStr(String regionStr){
+		for (Regions regions : Regions.values()) {
+			if(regions.getName().equals(regionStr))
+			{
+				this.region = regions;
+			}
+		}
 	}
 
 	private AmazonS3Client makeS3Client() {
@@ -81,12 +91,7 @@ public class AccessAwsS3 {
 	private  InputStream getObject(String bucketName, String objectKey) throws FileNotFoundException {
 	     // AmazonS3Clientインスタンスを作成
 	    AmazonS3Client cli = makeS3Client();
-
-	    Region asiaRegion = Region.getRegion(Regions.AP_NORTHEAST_1);
-	    cli.setRegion(asiaRegion);
-
-	     // エンドポイントを設定
-	    //cli.setEndpoint(this.endPoint);
+	    cli.setRegion(Region.getRegion(region));
 
 	     // rootDirectory(Bucket名), objectKey(オブジェクトまでの相対パス)からリクエストを作成
 	    GetObjectRequest request = new GetObjectRequest(bucketName, objectKey);

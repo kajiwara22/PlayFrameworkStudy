@@ -1,4 +1,5 @@
-@(msg:String,form1:Form[models.AwsS3])
+@(msg:String,form1:Form[models.AwsS3],opts:List[Tuple2[String,String]])
+
 
 @main("sample Page"){
 	<h1>Hello</h1>
@@ -14,9 +15,7 @@
 		@(helper.inputText(
 			field = form1("secretKey")
 		))
-		@(helper.inputText(
-			field = form1("endPoint")
-		))
+		@(helper.select(field = form1("region"),options = opts))
 		@(helper.inputText(
 			field = form1("bucketName")
 		))

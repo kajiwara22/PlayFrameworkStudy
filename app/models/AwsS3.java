@@ -12,7 +12,6 @@ import java.nio.file.Path;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 import play.db.ebean.Model;
 
 import util.AccessAwsS3;
@@ -29,7 +28,7 @@ public class AwsS3 extends Model{
 	public String subject;
 	public String accessKey;
 	public String secretKey;
-	public String endPoint;
+	public String region;
 	public String bucketName;
 	public String objectKey;
 
@@ -37,7 +36,7 @@ public class AwsS3 extends Model{
 
 	@Override
 	public String toString(){
-		return ("accessKey:"+accessKey+",secretKey:"+secretKey);
+		return ("accessKey:"+accessKey+",secretKey:"+secretKey+",region:"+region+",bucket:"+bucketName+",objectKey:"+objectKey);
 	}
 
 	public String getJson(){
@@ -45,7 +44,7 @@ public class AwsS3 extends Model{
 		accessAwsS3.setAccessKey(accessKey);
 		accessAwsS3.setAccessSecretKey(secretKey);
 		accessAwsS3.setBucketName(bucketName);
-		accessAwsS3.setEndPoint(endPoint);
+		accessAwsS3.setRegionStr(region);
 		accessAwsS3.setObjectKey(objectKey);
 		StringBuilder retText = new StringBuilder();
 		try {
